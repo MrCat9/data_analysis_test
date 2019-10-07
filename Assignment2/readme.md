@@ -150,6 +150,8 @@ def data_analysis():
     total_num = np.array(total_num_df.loc[:, 'total']).reshape(longitude_num, latitude_num)
 
     plt.title('heat map about the number of businesses')
+    plt.xlabel('longitude')
+    plt.ylabel('latitude')
     plt.imshow(total_num, extent=(np.amin(longitude_s), np.amax(longitude_s), np.amin(latitude_s), np.amax(latitude_s)), cmap='jet')
     plt.colorbar()
     # plt.grid()
