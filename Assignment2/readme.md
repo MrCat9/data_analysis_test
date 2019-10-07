@@ -11,6 +11,9 @@
 #### 0.1.设定起始点，之后程序将从起始点开始，从左上到右下，以`stride`为步长，遍历`latitude_num*longitude_num`个点。
 > 测试发现选取的点(center)的经纬度点和商家的经纬度点的距离(distance)最大可以达到1km以上，所以步长(stride)定为0.01。
 #### 0.2.将`latitude_num*longitude_num`个点的经纬度传递给`get_data(latitude, longitude)`方法，通过api获取数据，存为json文件。
+> api的使用详见 https://www.yelp.com/developers/documentation/v3/get_started
+
+> api_key的获取：0.注册yelp账号；1.创建app；2.复制api_key。详见 https://www.yelp.com/developers/documentation/v3/authentication
 #### 0.3.使用`data2df()`方法，将json文件整理为dataframe，并将dataframe保存为csv文件。
 #### 0.4.使用`data_analysis()`方法，绘制热力图。
 ```python
@@ -144,7 +147,7 @@ def data_analysis():
 
     latitude_s = total_num_df.loc[:, 'c_latitude']
     longitude_s = total_num_df.loc[:, 'c_longitude']
-    total_num = np.array(total_num_df.loc[:, 'total']).reshape(latitude_num, longitude_num)
+    total_num = np.array(total_num_df.loc[:, 'total']).reshape(longitude_num, latitude_num)
 
     plt.title('heat map about the number of businesses')
     plt.imshow(total_num, extent=(np.amin(longitude_s), np.amax(longitude_s), np.amin(latitude_s), np.amax(latitude_s)), cmap='jet')
