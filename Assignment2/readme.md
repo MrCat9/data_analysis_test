@@ -147,7 +147,7 @@ def data_analysis():
 
     latitude_s = total_num_df.loc[:, 'c_latitude']
     longitude_s = total_num_df.loc[:, 'c_longitude']
-    total_num = np.array(total_num_df.loc[:, 'total']).reshape(longitude_num, latitude_num)
+    total_num = np.array(total_num_df.loc[:, 'total']).reshape(latitude_num, longitude_num)
 
     plt.title('heat map about the number of businesses')
     plt.xlabel('longitude')
